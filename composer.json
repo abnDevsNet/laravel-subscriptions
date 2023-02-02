@@ -57,7 +57,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AbnDevs\\Subscriptions\\LaravelSubscriptionsServiceProvider"
+                "AbnDevs\\Subscriptions\\SubscriptionsServiceProvider"
             ]
         }
     },

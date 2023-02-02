@@ -6,7 +6,7 @@ namespace AbnDevs\Subscriptions;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelSubscriptionsServiceProvider extends ServiceProvider
+class SubscriptionsServiceProvider extends ServiceProvider
 {
 
     /**
@@ -59,10 +59,6 @@ class LaravelSubscriptionsServiceProvider extends ServiceProvider
             __DIR__ . '/../database/migrations/create_plan_subscription_schedules_table.php' => database_path('migrations/' . date('Y_m_d_His', time() + 5) . '_create_plan_subscription_schedules_table.php'),
             __DIR__ . '/../database/migrations/create_plan_combinations_table.php' => database_path('migrations/' . date('Y_m_d_His', time() + 6) . '_create_plan_combinations_table.php')
         ], 'laravel-subscriptions.migrations');
-
-        $this->publishes([
-            __DIR__ . '/../database/migrations/v1.0.0/alter_plan_combinations_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_alter_plan_combinations_table.php'),
-        ], 'laravel-subscriptions.migrations.v7');
     }
 
 }

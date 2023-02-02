@@ -4,7 +4,7 @@ namespace AbnDevs\Subscriptions\Tests;
 
 use AbnDevs\Subscriptions\Models\Plan;
 use AbnDevs\Subscriptions\Models\PlanFeature;
-use AbnDevs\Subscriptions\LaravelSubscriptionsServiceProvider;
+use AbnDevs\Subscriptions\SubscriptionsServiceProvider;
 use AbnDevs\Subscriptions\Tests\Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -81,7 +81,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            LaravelSubscriptionsServiceProvider::class,
+            SubscriptionsServiceProvider::class,
         ];
     }
 
