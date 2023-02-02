@@ -1,0 +1,66 @@
+{
+    "name": "abndevs/laravel-subscriptions",
+    "description": "Laravel Subscriptions is a flexible plans and subscription management system for Laravel.",
+    "type": "library",
+    "keywords": [
+        "plan",
+        "value",
+        "laravel",
+        "feature",
+        "database",
+        "recurring",
+        "subscription"
+    ],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/abndevs/laravel-subscriptions/issues",
+        "source": "https://github.com/abndevs/laravel-subscriptions",
+        "docs": "https://github.com/abndevs/laravel-subscriptions/blob/master/README.md"
+    },
+    "authors": [
+        {
+            "name": "Bishwajit Adhikary",
+            "email": "bishwajitcadhikary@gmail.com",
+            "homepage": "https://abndevs.net/bishwajitcadhikary"
+        }
+    ],
+    "require": {
+        "php": "^8.0.2",
+        "doctrine/dbal": "^3.5",
+        "laravel/framework": "^9.48"
+    },
+    "require-dev": {
+        "illuminate/console": "^9.0",
+        "illuminate/container": "^9.0",
+        "phpunit/phpunit": "^9.5.8",
+        "orchestra/testbench": "^7.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "AbnDevs\\Subscriptions\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AbnDevs\\Subscriptions\\Tests\\": "tests",
+            "AbnDevs\\Subscriptions\\Tests\\Database\\Factories\\": "tests/Database/Factories"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "optimize-autoloader": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AbnDevs\\Subscriptions\\LaravelSubscriptionsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
