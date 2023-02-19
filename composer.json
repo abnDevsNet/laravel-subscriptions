@@ -27,12 +27,12 @@
     "require": {
         "php": "^8.0.2",
         "doctrine/dbal": "^3.5",
-        "laravel/framework": "^9.48"
+        "laravel/framework": "^10.0"
     },
     "require-dev": {
         "illuminate/console": "^9.0",
         "illuminate/container": "^9.0",
-        "phpunit/phpunit": "^9.5.8",
+        "phpunit/phpunit": "^10.0",
         "orchestra/testbench": "^7.0.0"
     },
     "autoload": {
