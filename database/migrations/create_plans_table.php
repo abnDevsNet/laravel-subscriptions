@@ -17,7 +17,7 @@ return new class extends Migration
     {
         Schema::create(config('laravel-subscriptions.tables.plans'), function (Blueprint $table) {
             // Columns
-            $table->increments('id');
+            $table->id();
             $table->string('tag')->unique();
             $table->string('name');
             $table->string('description')->nullable();

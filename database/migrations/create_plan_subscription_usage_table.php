@@ -16,14 +16,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create(config('laravel-subscriptions.tables.plan_subscription_usage'), function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('plan_subscription_feature_id')->unique();
+            $table->id();
+            $table->foreignId('plan_subscription_feature_id')->unique()->constrained(config('laravel-subscriptions.tables.plan_subscription_features'))->cascadeOnDelete()->cascadeOnUpdate();
             $table->unsignedInteger('used');
             $table->timestamp('valid_until')->nullable();
             $table->timestamps();
-
-            $table->foreign('plan_subscription_feature_id')->references('id')->on(config('laravel-subscriptions.tables.plan_subscription_features'))
-                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

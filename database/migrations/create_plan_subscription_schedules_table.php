@@ -15,16 +15,14 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create(config('laravel-subscriptions.tables.plan_subscription_schedules'), function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('subscription_id');
+            $table->id();
+            $table->foreignId('subscription_id')->constrained(config('laravel-subscriptions.tables.plan_subscriptions'))->cascadeOnDelete()->cascadeOnUpdate();
             $table->morphs('scheduleable', 'scheduleable_index');
             $table->timestamp('scheduled_at')->nullable();
             $table->timestamp('failed_at')->nullable();
             $table->timestamp('succeeded_at')->nullable();
 
             $table->unique(['subscription_id', 'scheduleable_type', 'scheduleable_id', 'scheduled_at'], 'unique_plan_subscription_keys');
-
-            $table->foreign('subscription_id', 'plan_subscription_fk')->references('id')->on(config('laravel-subscriptions.tables.plan_subscriptions'))->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

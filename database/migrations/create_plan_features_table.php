@@ -16,10 +16,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create(config('laravel-subscriptions.tables.plan_features'), function (Blueprint $table) {
-            // Columns
-            $table->increments('id');
+            $table->id();
             $table->string('tag');
-            $table->unsignedInteger('plan_id');
+            $table->foreignId('plan_id')->constrained(config('laravel-subscriptions.tables.plans'))->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('value');
@@ -30,8 +29,6 @@ return new class extends Migration
 
             // Indexes
             $table->unique(['tag', 'plan_id']);
-            $table->foreign('plan_id')->references('id')->on(config('laravel-subscriptions.tables.plans'))
-                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

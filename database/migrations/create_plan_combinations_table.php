@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create(config('laravel-subscriptions.tables.plan_combinations'), function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('plan_id')->nullable();
+            $table->foreignId('plan_id')->nullable()->constrained(config('laravel-subscriptions.tables.plans'))->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('tag')->unique();
             $table->char('country', 3);
             $table->char('currency', 3);
@@ -25,8 +25,6 @@ return new class extends Migration {
             $table->timestamps();
 
             $table->unique(['plan_id','country', 'currency', 'invoice_period', 'invoice_interval'], 'unique_plan_combination');
-
-            $table->foreign('plan_id', 'plan_id_fk')->references('id')->on(config('laravel-subscriptions.tables.plans'))->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

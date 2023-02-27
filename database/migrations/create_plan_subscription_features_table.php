@@ -16,9 +16,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create(config('laravel-subscriptions.tables.plan_subscription_features'), function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('plan_subscription_id');
-            $table->unsignedInteger('plan_feature_id')->nullable();
+            $table->id();
+            $table->foreignId('plan_subscription_id')->constrained(config('laravel-subscriptions.tables.plan_subscriptions'))->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('plan_feature_id')->nullable()->constrained(config('laravel-subscriptions.tables.plan_features'))->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('tag');
             $table->string('name');
             $table->string('description')->nullable();
@@ -29,12 +29,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unique(['plan_subscription_id', 'tag']);
-
-            $table->foreign('plan_subscription_id')->references('id')->on(config('laravel-subscriptions.tables.plan_subscriptions'))
-                ->onDelete('cascade')->onUpdate('cascade');
-
-            $table->foreign('plan_feature_id')->references('id')->on(config('laravel-subscriptions.tables.plan_features'))
-                ->onDelete('set null')->onUpdate('cascade');
         });
     }
 
